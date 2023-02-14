@@ -6,6 +6,10 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ColorModeContext from '@src/contexts/colorModeContext';
 
+export interface IHeader extends React.ComponentPropsWithoutRef<'header'> {
+  title?: string;
+}
+
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
@@ -53,38 +57,42 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function NavBar() {
+const Header: React.FC<IHeader> = ({ ...headerProps }) => {
   const theme = useTheme();
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" elevation={0}>
-        <Toolbar variant="dense">
-          <House style={{ marginRight: 8, color: 'white' }} />
-          <Typography
-            variant="h6"
-            color="white"
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
-            Home of Lizards
-          </Typography>
-          <ColorModeContext.Consumer>
-            {({ toggleColorMode }) => (
-              <FormControlLabel
-                onChange={toggleColorMode}
-                control={
-                  <MaterialUISwitch
-                    sx={{ m: 1 }}
-                    checked={theme.palette.mode === 'dark' ? true : false}
-                  />
-                }
-                label=""
-                labelPlacement="start"
-              />
-            )}
-          </ColorModeContext.Consumer>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <header {...headerProps}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static" elevation={0}>
+          <Toolbar variant="dense">
+            <House style={{ marginRight: 8, color: 'white' }} />
+            <Typography
+              variant="h6"
+              color="white"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+              Home
+            </Typography>
+            <ColorModeContext.Consumer>
+              {({ toggleColorMode }) => (
+                <FormControlLabel
+                  onChange={toggleColorMode}
+                  control={
+                    <MaterialUISwitch
+                      sx={{ m: 1 }}
+                      checked={theme.palette.mode === 'dark' ? true : false}
+                    />
+                  }
+                  label=""
+                  labelPlacement="start"
+                />
+              )}
+            </ColorModeContext.Consumer>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </header>
   );
-}
+};
+
+export default Header;

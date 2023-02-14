@@ -72,7 +72,7 @@ const App = (props: AppPropsWithLayout) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>Home of Lizards</title>
+        <title>Home</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ColorModeContext.Provider value={colorMode}>
