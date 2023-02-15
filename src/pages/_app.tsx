@@ -68,6 +68,7 @@ const App = (props: AppPropsWithLayout) => {
   const theme = React.useMemo(() => createTheme(GetDesignTokens(mode)), [mode]);
 
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   const getLayout = Component.getLayout || ((page) => page);
   return (
     <CacheProvider value={emotionCache}>
