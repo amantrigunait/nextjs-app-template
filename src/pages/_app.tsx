@@ -75,6 +75,19 @@ const App = (props: AppPropsWithLayout) => {
       <Head>
         <title>Home</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta charSet="utf-8" />
+        {/* <link rel="icon" type="image/png" href="/logo.jpeg" />
+        <meta name="description" content="Description" />
+        <meta name="keywords" content="Keywords" />
+        <meta name="author" content="Author" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Description" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="URL of a representative image for the website"
+        />
+        <meta property="og:description" content="Description" /> */}
       </Head>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
